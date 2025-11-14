@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>&#39;transformer1&#39; | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="11.12Day1｜2025-11-12｜Transformer前世今生预训练→ 统计语言模型→神经语言模型（NNLM）→ word2vec →emlo(使用LSTM获取上下文信息) 预训练将及其相似架构的模型  浅层参数复用 假设分类模型 A   基于10000张数据训练 模型B 只有100张数据 可以利用A的浅层网络的参数继续训练 分为 冻结 和 微调冻结不改变原有参数    微调利用B的数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="&#39;transformer1&#39;">
+<meta property="og:url" content="http://example.com/2025/11/12/ExportBlock-3e83edcb-2022-4cd8-b550-2a39baf3a453-Part-1/11%2012%202a91ea36e8d780af81a4d3663e3b0e9b/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="11.12Day1｜2025-11-12｜Transformer前世今生预训练→ 统计语言模型→神经语言模型（NNLM）→ word2vec →emlo(使用LSTM获取上下文信息) 预训练将及其相似架构的模型  浅层参数复用 假设分类模型 A   基于10000张数据训练 模型B 只有100张数据 可以利用A的浅层网络的参数继续训练 分为 冻结 和 微调冻结不改变原有参数    微调利用B的数据">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/image.png">
+<meta property="og:image" content="http://example.com/image%201.png">
+<meta property="og:image" content="http://example.com/image%202.png">
+<meta property="og:image" content="http://example.com/image%203.png">
+<meta property="og:image" content="http://example.com/image%204.png">
+<meta property="og:image" content="http://example.com/image%205.png">
+<meta property="og:image" content="http://example.com/image%206.png">
+<meta property="article:published_time" content="2025-11-12T13:52:45.000Z">
+<meta property="article:modified_time" content="2025-11-14T14:10:08.042Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="LLM">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/image.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Search"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-ExportBlock-3e83edcb-2022-4cd8-b550-2a39baf3a453-Part-1/11 12 2a91ea36e8d780af81a4d3663e3b0e9b" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2025/11/12/ExportBlock-3e83edcb-2022-4cd8-b550-2a39baf3a453-Part-1/11%2012%202a91ea36e8d780af81a4d3663e3b0e9b/" class="article-date">
+  <time class="dt-published" datetime="2025-11-12T13:52:45.000Z" itemprop="datePublished">2025-11-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      &#39;transformer1&#39;
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="11-12"><a href="#11-12" class="headerlink" title="11.12"></a>11.12</h1><h3 id="Day1｜2025-11-12｜Transformer前世今生"><a href="#Day1｜2025-11-12｜Transformer前世今生" class="headerlink" title="Day1｜2025-11-12｜Transformer前世今生"></a>Day1｜2025-11-12｜Transformer前世今生</h3><p>预训练→ 统计语言模型→神经语言模型（NNLM）→ word2vec →emlo(使用LSTM获取上下文信息)</p>
+<h3 id="预训练"><a href="#预训练" class="headerlink" title="预训练"></a>预训练</h3><p>将及其相似架构的模型  浅层参数复用</p>
+<p>假设分类模型 A   基于10000张数据训练</p>
+<p>模型B 只有100张数据 可以利用A的浅层网络的参数继续训练</p>
+<p>分为 冻结 和 微调<br>冻结不改变原有参数    微调利用B的数据 继续改变A的浅层参数</p>
+<p>微调用的最多</p>
+<h3 id="统计语言模型"><a href="#统计语言模型" class="headerlink" title="统计语言模型"></a>统计语言模型</h3><p>语言模型的两个主要问题：计算一句话的概率 计算下一个单词可能是什么</p>
+<p>统计+语言模型 本质上是条件概率，也就链式法则  去处理语言（人说的话）+模型（去完成两个任务）<br>不过首先要将句子拆分为一个一个的单词</p>
+<p><img src="/image.png" alt="image.png"></p>
+<p>又可以拆分为两个示例： 一个是预测  一个是判断<br>预测一句话后面的词是什么： 你今天要去___</p>
+<p>判断这个句子对不对： P(”你今天要去上班”)  和 P(”你今天要去火锅”)  哪一个概率大</p>
+<p>条件概率公式如下 ，count 就是统计的信息 出现次数</p>
+<p><img src="/image%201.png" alt="image.png"></p>
+<p>n元统计语言模型（马尔科夫链）</p>
+<p>正常一句话可能包括很多个单词   但是往往不需要很多的单词就可以判断出很多单词的概率<br>比如二元就是取两个词    上面的两句话分别可以近似 P(上班 | 去) 和  P(火锅 | 去)</p>
+<p>平滑策略<br>当分母的count() 为0，也就是分母为零时无意义 所以公式相对进行了处理，分子分母都加入不为0的正数，如下</p>
+<p><img src="/image%202.png" alt="image.png"></p>
+<h3 id="神经网络语言模型（独热编码-词向量-Word-Embedding-的起源）"><a href="#神经网络语言模型（独热编码-词向量-Word-Embedding-的起源）" class="headerlink" title="神经网络语言模型（独热编码+词向量 Word Embedding 的起源）"></a>神经网络语言模型（<strong>独热编码+词向量 Word Embedding 的起源</strong>）</h3><p>用神经网络解决语言模型的两个问题</p>
+<p>一开始解决 “预测下一个单词是什么”这一个系列的问题。   可以用一个最简单的感知机来处理</p>
+<p><img src="/image%203.png" alt="image.png"></p>
+<p>简单描述：</p>
+<ol>
+<li><p>假设其中输入为w1-w4，这里w1-w4指的是将单词进行独热编码</p>
+</li>
+<li><p>将一个参数可学习的矩阵Q对每一个w去处理</p>
+</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">W1*Q=c1</span><br><span class="line">W2*Q=c2</span><br><span class="line">W3*Q=c3</span><br><span class="line">W4*Q=c4</span><br><span class="line"></span><br><span class="line">Q为参数可学习的矩阵，大小也是可以定义的 只需满足v行</span><br><span class="line">c1-c4为词向量,经过同一矩阵Q的处理后，单词之间就可以出现相关性的可能</span><br><span class="line">后续也会继续改进网络去求得Q </span><br><span class="line"></span><br><span class="line">c = [c1 c2 c3 c4]</span><br></pre></td></tr></table></figure>
+
+<p>  3.用公式描述网络 为 softmax(U[tanh(Wc+b1)]+b2) &#x3D;&#x3D; [0.1 0.1 0.2 0.3 0.5]   范围[1,V]</p>
+<p> U  W 也为可学习的参数矩阵</p>
+<p>独热编码（one-hot）</p>
+<p>将词库中的每个单词 用一个bit来表示</p>
+<p>假设四个单词进行编码   进行独热编码后具体表示为  0001  0010  0100 1000</p>
+<p>但是这种方法无法呈现出单词之间的相关性  单词之间无法通过余弦相似度等方法去计算相关性</p>
+<p>词向量</p>
+<p>得到词向量 词向量的维度 可以由Q矩阵控制<br>大大减小 由于独热编码带来的数据矩阵过大的问题</p>
+<p>得到了词向量（副产品） 还可以根据词向量去计算单词之间的相关性  从而用n元统计的方式 预测下一个单词对不对（也叫做下游任务）</p>
+<h3 id="word2vec模型"><a href="#word2vec模型" class="headerlink" title="word2vec模型"></a>word2vec模型</h3><p>模型直接为词向量服务 ，只为了得到词向量</p>
+<p><img src="/image%204.png" alt="image.png"></p>
+<p>分两大类：</p>
+<p>cbow: 一个老师 多个学生去学习Q矩阵  （给出上下文词，预测<strong>中间词</strong>）</p>
+<p>skip-gram: 多个老师 一个学生 去学习Q矩阵 （给出中间词，预测<strong>上下文词</strong>）</p>
+<p>NNLM：使用多层感知机 ，softmax(U[tanh(Wc+b1)]+b2)  这里c为xQ</p>
+<p>CBOW: 使用最简单的架构， softmax( W(xQ) +b)  x为输入 去除了多余的tanh  针对非线性的结果准确度并不关注 ，只关注快速的 计算出Q矩阵 用来处理出词向量</p>
+<p>输入x应该是使用独热编码  xQ为词向量 </p>
+<p>缺点：无法有效区分多义词  多义词编码一致</p>
+<h2 id="预训练语言模型的下游任务改造（简介）"><a href="#预训练语言模型的下游任务改造（简介）" class="headerlink" title="预训练语言模型的下游任务改造（简介）"></a>预训练语言模型的下游任务改造（简介）</h2><p>word2vec是一个预训练模型</p>
+<p>现在处理一个问题 X(Q+S) ，给出一个回答Y(yes)</p>
+<p><img src="/image%205.png" alt="image.png"></p>
+<p>该模型的 embedding 实际上就可以用预训练好的word2vec模型带入 ，带入预训练好的Q矩阵得到词向量</p>
+<p>有两种方法 </p>
+<p>1.冻结 不改变Q矩阵<br>2.微调 随着任务的改变 进行Q矩阵的改变</p>
+<h3 id="ELMO模型（双向LSTM模型-解决词向量多义词问题）"><a href="#ELMO模型（双向LSTM模型-解决词向量多义词问题）" class="headerlink" title="ELMO模型（双向LSTM模型 解决词向量多义词问题）"></a>ELMO模型（双向LSTM模型 解决词向量多义词问题）</h3><p><img src="/image%206.png" alt="image.png"></p>
+<p>模型使用双向lstm来获取上下文信息，E1+E2+E3层的信息融合。原有word2vec只考虑E1层，现在使用lstm传递 上下文信息，</p>
+<p>结果T1-TN 结果为词向量信息</p>
+<p>lstm相比rnn可以保持梯度不消失问题，时间序列上逐步迭代，但是无法并行，长期依赖。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2025/11/12/ExportBlock-3e83edcb-2022-4cd8-b550-2a39baf3a453-Part-1/11%2012%202a91ea36e8d780af81a4d3663e3b0e9b/" data-id="cuidDiDiLc3Mkgh1_8u-oJs9o" data-title="&#39;transformer1&#39;" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LLM/" rel="tag">LLM</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2025/11/13/ExportBlock-29366d2e-4062-4e47-9352-f658362f6101-Part-1/11%2013%202aa1ea36e8d780608f90fd7c6861baa1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          &#39;transformer2&#39;
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/LLM/" rel="tag">LLM</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/LLM/" style="font-size: 10px;">LLM</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/11/">November 2025</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2025/11/13/ExportBlock-29366d2e-4062-4e47-9352-f658362f6101-Part-1/11%2013%202aa1ea36e8d780608f90fd7c6861baa1/">&#39;transformer2&#39;</a>
+          </li>
+        
+          <li>
+            <a href="/2025/11/12/ExportBlock-3e83edcb-2022-4cd8-b550-2a39baf3a453-Part-1/11%2012%202a91ea36e8d780af81a4d3663e3b0e9b/">&#39;transformer1&#39;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2025 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
